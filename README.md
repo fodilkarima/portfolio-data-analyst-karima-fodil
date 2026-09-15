@@ -1,106 +1,103 @@
-# Karima Fodil — Portfolio Data Analyst
+# Détection de faux billets — Machine Learning avec Python
 
-Bienvenue sur mon portfolio de projets en **Data Analysis**.
+## Contexte / besoin métier
 
-À travers ces réalisations, je mets en pratique une démarche complète : comprendre un besoin métier, fiabiliser les données, construire l'analyse ou le modèle adapté, interpréter les résultats et formuler des recommandations exploitables.
+L'**Organisation nationale de lutte contre le faux-monnayage (ONCFM)** souhaite automatiser la détection des billets contrefaits.
 
-## Profil
+L'objectif est de construire un modèle capable de déterminer si un billet est authentique ou contrefait à partir de ses caractéristiques dimensionnelles.
 
-Data Analyst formée à l'analyse de données, à la business intelligence, aux statistiques et au machine learning.
+## Données
 
-### Compétences principales
+- **1 500 billets**
+- **1 000 authentiques**
+- **500 contrefaits**
+- **6 caractéristiques dimensionnelles**
+- variable cible : `1 = authentique`, `0 = contrefait`
+- **37 valeurs manquantes** dans `margin_low`, remplacées par la médiane
 
-`Python` `SQL` `Power BI` `Power Query` `DAX` `Pandas` `NumPy` `Matplotlib` `Plotly` `Snowflake` `dbt` `Machine Learning` `Statistiques`
+La classe d'intérêt est le **billet contrefait**.
 
-### Méthodes mises en œuvre
+## Modèles étudiés
 
-- nettoyage et contrôle qualité des données ;
-- modélisation relationnelle et schéma en étoile ;
-- analyses exploratoires et statistiques ;
-- création de KPI et dashboards ;
-- tests statistiques ;
-- clustering et ACP ;
-- classification supervisée ;
-- pipelines de transformation et ELT ;
-- interprétation métier et recommandations ;
-- prise en compte du RGPD.
+- K-means
+- Régression logistique
+- K-nearest neighbors (KNN)
+- Random Forest
 
----
+## Démarche
 
-# Projets
+1. analyse exploratoire ;
+2. traitement des valeurs manquantes ;
+3. séparation des variables explicatives et de la cible ;
+4. standardisation ;
+5. séparation entraînement / test ;
+6. stratification des classes ;
+7. entraînement des modèles ;
+8. comparaison via matrice de confusion et métriques ;
+9. sélection et sauvegarde du modèle final ;
+10. création d'une fonction de prédiction réutilisable.
 
-## Projets phares
+## Prétraitement
 
-### 1. [Détection de faux billets — Machine Learning](projets/11-detection-faux-billets-machine-learning/)
-**Objectif :** automatiser la détection de billets contrefaits.
+La séparation utilisée est :
 
-**Compétences :** Python · Régression logistique · Random Forest · KNN · K-means · ROC-AUC · Pipeline
+- **80 % entraînement** : 1 200 billets ;
+- **20 % test** : 300 billets.
 
-**Résultat :** modèle final à **99 % d'accuracy** et **0,9994 de ROC-AUC**.
+La stratification conserve les proportions de classes :
 
----
+- entraînement : 800 authentiques / 400 contrefaits ;
+- test : 200 authentiques / 100 contrefaits.
 
-### 2. [Pilotage de projets avec Power BI](projets/06-dashboard-power-bi-sanitoral/)
-**Objectif :** piloter délais, budgets et livrables d'un portefeuille de projets IT & Marketing.
+La standardisation est particulièrement importante pour KNN, K-means et la régression logistique.
 
-**Compétences :** Power BI · Power Query · DAX · Modèle en étoile · Dashboard · Data storytelling
+## Résultats
 
----
+| Modèle | Accuracy | Précision faux | Rappel faux | F1 faux | ROC-AUC |
+|---|---:|---:|---:|---:|---:|
+| K-means | 98,67 % | 98 % | 98 % | 98 % | — |
+| Régression logistique | 99 % | 98,99 % | 98 % | 98,49 % | **0,9994** |
+| KNN | 98,33 % | 97,98 % | 97 % | 97,49 % | 0,997 |
+| Random Forest | 99 % | 98,99 % | 98 % | 98,49 % | 0,9992 |
 
-### 3. [Étude de marché internationale](projets/10-etude-marche-international-python/)
-**Objectif :** identifier les marchés les plus favorables à l'exportation.
+Pour K-means, le score de silhouette obtenu est **0,33**, ce qui indique une séparation géométrique modérée des clusters malgré une classification proche des classes réelles.
 
-**Compétences :** Python · ACP · CAH · K-means · Standardisation · Segmentation
+## Choix final
 
----
+La **régression logistique** est retenue.
 
-### 4. [Analyse des ventes d'une librairie — Lapage](projets/08-analyse-ventes-lapage/)
-**Objectif :** comprendre les performances commerciales et les comportements clients.
+Elle offre :
 
-**Compétences :** Python · Statistiques · Chi-2 · Spearman · Kruskal-Wallis · Segmentation client
+- **99 % d'exactitude** ;
+- **98 % de rappel** sur les faux billets ;
+- une **ROC-AUC de 0,9994** ;
+- une bonne interprétabilité ;
+- une mise en production simple.
 
----
+## Réutilisation du modèle
 
-### 5. [Pipeline de transformation avec dbt](projets/07-pipeline-dbt-openclassrooms/)
-**Objectif :** analyser l'évolution de profils sociodémographiques via un pipeline ELT.
+Le modèle final est intégré dans un pipeline comprenant :
 
-**Compétences :** Snowflake · dbt · SQL · ELT · Data Quality · RGPD
+1. imputation ;
+2. standardisation ;
+3. régression logistique.
 
----
+Une fonction `prediction_billet_RL()` permet ensuite de charger le pipeline, vérifier les variables et produire une prédiction :
 
-## Autres réalisations
+- `0 = contrefait`
+- `1 = authentique`
 
-| Projet | Problématique | Compétences |
-|---|---|---|
-| [Optimisation des données d'une boutique](projets/05-optimisation-boutique-python/) | Fiabiliser les données ERP/Web et améliorer le pilotage commercial | Python, nettoyage, jointures, statistiques |
-| [Accès à l'eau potable dans le monde](projets/09-acces-eau-potable-power-bi/) | Identifier les pays prioritaires pour une intervention | Power BI, analyse multicritère, dashboard |
-| [DATA Immo](projets/04-data-immo/) | Structurer des données immobilières pour produire des analyses fiables | SQL, nettoyage, modélisation, RGPD |
-| [Étude de l'alimentation mondiale — FAO](projets/03-alimentation-mondiale-fao/) | Étudier disponibilité alimentaire et sous-nutrition | Python, Pandas, Matplotlib |
-| [Base de données — Assurance habitation](projets/02-bdd-assurance-habitation/) | Structurer et interroger les données de contrats | SQL, schéma relationnel, jointures |
-| [Analyse de performance e-commerce](projets/01-performance-ecommerce/) | Comprendre CA, trafic, conversion et panier moyen | KPI, analyse descriptive, recommandations |
+## Valeur métier
 
----
+Le projet aboutit à un outil directement réutilisable pour automatiser la détection de nouveaux billets et réduire le temps nécessaire au contrôle manuel.
 
-# Démarche projet
+## Limites et prochaines pistes
 
-Pour chaque réalisation, j'utilise une structure orientée recruteur/client :
+- valider le modèle sur de nouveaux jeux de données ;
+- surveiller les performances dans le temps ;
+- tester la robustesse aux erreurs de mesure ;
+- étudier le réglage du seuil si la priorité métier devient la réduction maximale des faux négatifs.
 
-**Contexte métier → Données → Préparation → Analyse / Modélisation → Résultats → Recommandations → Limites**
+## Compétences démontrées
 
-L'objectif n'est pas seulement de montrer les outils utilisés, mais la manière dont les données permettent de répondre à une question métier et d'éclairer la décision.
-
-# Veille métier et technologique
-
-La veille fait partie intégrante de ce portfolio. La section [`veille/`](veille/README.md) sera complétée avec :
-
-- les sources réellement suivies ;
-- les outils et méthodes identifiés ;
-- les critères de sélection des sources ;
-- les enseignements tirés ;
-- l'impact de la veille sur mes choix techniques.
-
-# Contact
-
-- **LinkedIn :** à compléter
-- **GitHub :** à compléter
-- **E-mail :** à compléter
+`Python` `Machine Learning` `Classification` `Régression logistique` `Random Forest` `KNN` `K-means` `ROC-AUC` `Pipeline`
