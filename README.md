@@ -1,106 +1,58 @@
-# Karima Fodil — Portfolio Data Analyst
+# Analyse de performance e-commerce
 
-Bienvenue sur mon portfolio de projets en **Data Analysis**.
+## Contexte / besoin métier
 
-À travers ces réalisations, je mets en pratique une démarche complète : comprendre un besoin métier, fiabiliser les données, construire l'analyse ou le modèle adapté, interpréter les résultats et formuler des recommandations exploitables.
+L'objectif de cette analyse est de comprendre l'évolution récente de l'activité d'un site e-commerce afin d'identifier les leviers susceptibles d'améliorer le chiffre d'affaires et la conversion.
 
-## Profil
+L'étude porte notamment sur l'évolution du chiffre d'affaires par segment, le comportement des visiteurs, le volume des ventes et la relation entre trafic et performance commerciale.
 
-Data Analyst formée à l'analyse de données, à la business intelligence, aux statistiques et au machine learning.
+## Données analysées
 
-### Compétences principales
+Les indicateurs étudiés comprennent :
 
-`Python` `SQL` `Power BI` `Power Query` `DAX` `Pandas` `NumPy` `Matplotlib` `Plotly` `Snowflake` `dbt` `Machine Learning` `Statistiques`
+- chiffre d'affaires par segment ;
+- nombre de visites ;
+- nombre de ventes ;
+- temps passé sur le site ;
+- montant dépensé ;
+- évolution mensuelle des comportements visiteurs.
 
-### Méthodes mises en œuvre
+## Démarche
 
-- nettoyage et contrôle qualité des données ;
-- modélisation relationnelle et schéma en étoile ;
-- analyses exploratoires et statistiques ;
-- création de KPI et dashboards ;
-- tests statistiques ;
-- clustering et ACP ;
-- classification supervisée ;
-- pipelines de transformation et ELT ;
-- interprétation métier et recommandations ;
-- prise en compte du RGPD.
+1. Analyse de l'évolution du chiffre d'affaires sur les 12 derniers mois.
+2. Comparaison des segments **High-tech**, **Biens de consommation** et **Nourriture**.
+3. Étude de la relation entre temps de visite et montant dépensé.
+4. Comparaison de la croissance du trafic avec celle des ventes.
+5. Analyse de l'évolution du comportement des visiteurs.
+6. Mise en évidence de la relation entre volume de ventes et chiffre d'affaires.
 
----
+## Résultats clés
 
-# Projets
+- Le segment **High-tech**, historiquement important, recule après novembre 2019.
+- Le segment **Nourriture** progresse fortement et devient un moteur de chiffre d'affaires.
+- Les visites augmentent fortement, jusqu'à dépasser **500 000 en février 2020**, sans progression équivalente des ventes.
+- Le temps passé sur le site est positivement associé au montant dépensé.
+- Le volume des ventes progresse plus vite que le chiffre d'affaires, ce qui suggère une baisse du panier moyen.
 
-## Projets phares
+## Recommandations métier
 
-### 1. [Détection de faux billets — Machine Learning](projets/11-detection-faux-billets-machine-learning/)
-**Objectif :** automatiser la détection de billets contrefaits.
+- Renforcer les segments porteurs, notamment la **Nourriture**.
+- Améliorer le design et l'ergonomie du site afin de fluidifier le parcours d'achat.
+- Accompagner les nouveaux visiteurs avec une visite guidée ou un tutoriel.
+- Mettre en place des actions visant à augmenter le panier moyen, par exemple des promotions conditionnées à un montant minimum.
+- Personnaliser davantage le contenu et les recommandations pour favoriser l'engagement.
 
-**Compétences :** Python · Régression logistique · Random Forest · KNN · K-means · ROC-AUC · Pipeline
+## Impact
 
-**Résultat :** modèle final à **99 % d'accuracy** et **0,9994 de ROC-AUC**.
+L'analyse permet d'identifier que le problème principal n'est pas uniquement l'acquisition de trafic : la priorité est surtout d'améliorer la **conversion** et la **valeur générée par visiteur**.
 
----
+## Limites et prochaines pistes
 
-### 2. [Pilotage de projets avec Power BI](projets/06-dashboard-power-bi-sanitoral/)
-**Objectif :** piloter délais, budgets et livrables d'un portefeuille de projets IT & Marketing.
+- Approfondir l'analyse du tunnel de conversion.
+- Segmenter les visiteurs selon leur comportement.
+- Mesurer l'effet des recommandations par des tests A/B.
+- Suivre le panier moyen et le taux de conversion dans le temps.
 
-**Compétences :** Power BI · Power Query · DAX · Modèle en étoile · Dashboard · Data storytelling
+## Compétences démontrées
 
----
-
-### 3. [Étude de marché internationale](projets/10-etude-marche-international-python/)
-**Objectif :** identifier les marchés les plus favorables à l'exportation.
-
-**Compétences :** Python · ACP · CAH · K-means · Standardisation · Segmentation
-
----
-
-### 4. [Analyse des ventes d'une librairie — Lapage](projets/08-analyse-ventes-lapage/)
-**Objectif :** comprendre les performances commerciales et les comportements clients.
-
-**Compétences :** Python · Statistiques · Chi-2 · Spearman · Kruskal-Wallis · Segmentation client
-
----
-
-### 5. [Pipeline de transformation avec dbt](projets/07-pipeline-dbt-openclassrooms/)
-**Objectif :** analyser l'évolution de profils sociodémographiques via un pipeline ELT.
-
-**Compétences :** Snowflake · dbt · SQL · ELT · Data Quality · RGPD
-
----
-
-## Autres réalisations
-
-| Projet | Problématique | Compétences |
-|---|---|---|
-| [Optimisation des données d'une boutique](projets/05-optimisation-boutique-python/) | Fiabiliser les données ERP/Web et améliorer le pilotage commercial | Python, nettoyage, jointures, statistiques |
-| [Accès à l'eau potable dans le monde](projets/09-acces-eau-potable-power-bi/) | Identifier les pays prioritaires pour une intervention | Power BI, analyse multicritère, dashboard |
-| [DATA Immo](projets/04-data-immo/) | Structurer des données immobilières pour produire des analyses fiables | SQL, nettoyage, modélisation, RGPD |
-| [Étude de l'alimentation mondiale — FAO](projets/03-alimentation-mondiale-fao/) | Étudier disponibilité alimentaire et sous-nutrition | Python, Pandas, Matplotlib |
-| [Base de données — Assurance habitation](projets/02-bdd-assurance-habitation/) | Structurer et interroger les données de contrats | SQL, schéma relationnel, jointures |
-| [Analyse de performance e-commerce](projets/01-performance-ecommerce/) | Comprendre CA, trafic, conversion et panier moyen | KPI, analyse descriptive, recommandations |
-
----
-
-# Démarche projet
-
-Pour chaque réalisation, j'utilise une structure orientée recruteur/client :
-
-**Contexte métier → Données → Préparation → Analyse / Modélisation → Résultats → Recommandations → Limites**
-
-L'objectif n'est pas seulement de montrer les outils utilisés, mais la manière dont les données permettent de répondre à une question métier et d'éclairer la décision.
-
-# Veille métier et technologique
-
-La veille fait partie intégrante de ce portfolio. La section [`veille/`](veille/README.md) sera complétée avec :
-
-- les sources réellement suivies ;
-- les outils et méthodes identifiés ;
-- les critères de sélection des sources ;
-- les enseignements tirés ;
-- l'impact de la veille sur mes choix techniques.
-
-# Contact
-
-- **LinkedIn :** à compléter
-- **GitHub :** à compléter
-- **E-mail :** à compléter
+`Analyse métier` `KPI` `Data visualisation` `Interprétation` `Recommandations`
